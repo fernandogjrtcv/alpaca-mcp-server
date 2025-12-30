@@ -63,19 +63,15 @@ service:
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
+  enabled: true
   className: "external-nginx"
-  annotations: 
-    cert-manager.io/cluster-issuer: "cert-manager-resources"
+  annotations: {}
   hosts:
-    - host: mcp.alpaca.markets
+    - host: alpaca-mcp.9.169.66.156.nip.io
       paths:
         - path: /
           pathType: Prefix
-  tls: 
-    - secretName: cert-mcp.alpaca.markets
-      hosts:
-        - mcp.alpaca.markets
+  tls: []
 
 resources:
   limits:
