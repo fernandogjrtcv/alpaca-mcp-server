@@ -63,7 +63,7 @@ service:
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: true
+  enabled: false
   className: "external-nginx"
   annotations: 
     cert-manager.io/cluster-issuer: "cert-manager-resources"
@@ -77,12 +77,13 @@ ingress:
       hosts:
         - mcp.alpaca.markets
 
-resources: 
+resources:
   limits:
-    memory: 2Gi
-  requests:
     cpu: 500m
-    memory: 1Gi
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 # Using TCP socket probes since the MCP server requires specific HTTP headers (text/event-stream)
