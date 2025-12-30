@@ -112,6 +112,6 @@ jobs:
 
       - name: Verify deployment
         run: |
-          kubectl rollout status deployment/${{ env.HELM_RELEASE_NAME }}-mcp-server \
+          kubectl rollout status deployment/${{ env.HELM_RELEASE_NAME }} \
             --namespace ${{ env.HELM_NAMESPACE }} \
             --timeout=300s
